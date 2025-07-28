@@ -14,19 +14,43 @@ function Login(){
             alert("Invalid Credentials")
     }
     return(
-        <div className="containerDiv">
-            <h1>Admin Login</h1>
-            <input type="text" ref={userRef} placeholder="Username" value={username} onChange={(e)=>{setUsername(e.target.value)}} /><br/>
-            <input type="password" ref={passRef} placeholder="Password" value={password} onChange={(e)=>{setPassword(e.target.value)}} /><br/>
-            <button
-                onClick={(e) => {
-                    e.preventDefault();
-                    Validate();
-                }}
-            >
-                Login
-            </button>
-        </div>    
+        
+    <div className="flex flex-col justify-around min-h-screen bg-black">
+  <div className="flex flex-col justify-center items-center px-8 py-14 w-full max-w-md mx-auto h-[513px] space-y-15 text-white border-1 rounded-4xl border-purple-400 p-8">
+    <h1 className="text-3xl font-semibold">Admin Login</h1>
+
+    <input
+      className="w-full text-white bg-transparent border-b-2 border-purple-500 focus:outline-none placeholder-gray-400"
+      type="text"
+      ref={userRef}
+      placeholder="Username"
+      value={username}
+      onChange={(e) => setUsername(e.target.value)}
+    />
+
+    <input
+      className="w-full text-white bg-transparent border-b-2 border-purple-500 focus:outline-none placeholder-gray-400"
+      type="password"
+      ref={passRef}
+      placeholder="Password"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+    />
+
+    <button
+      className="w-full py-2 bg-purple-600 hover:bg-purple-700 rounded text-white font-medium transition duration-300"
+      type="submit"
+      onClick={(e) => {
+        e.preventDefault();
+        Validate();
+      }}
+    >
+      Submit
+    </button>
+  </div>
+
+</div>
+
     )
 }
 
