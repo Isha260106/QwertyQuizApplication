@@ -19,7 +19,7 @@ function Login(){
   <div className="flex flex-col justify-center items-center px-8 py-14 w-full max-w-md mx-auto h-[513px] space-y-15 text-white border-1 rounded-4xl border-purple-400 p-8">
     <h1 className="text-3xl font-semibold">Admin Login</h1>
 
-    <input
+    <input 
       className="w-full text-white bg-transparent border-b-2 border-purple-500 focus:outline-none placeholder-gray-400"
       type="text"
       ref={userRef}
