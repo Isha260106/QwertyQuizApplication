@@ -37,7 +37,7 @@ function AdminQuizBuilder() {
   };
 
   const validateForm = () => {
-    if (!quizTitle.trim() || !quizDescription.trim()) return false;
+    if (!quizTitle.trim()) return false;
 
     for (let q of questions) {
       if (
@@ -67,7 +67,7 @@ function AdminQuizBuilder() {
       description: quizDescription,
       questions: questions
     };
-
+    alert('Quiz submitted Successfully')
     console.log("Quiz Data:", quizData);
 
     // Uncomment below when backend is ready
@@ -96,42 +96,47 @@ function AdminQuizBuilder() {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h2>Create New Quiz</h2>
+    <div className='flex flex-col justify-around gap-4 items-center min-h-screen bg-black'>
+    <div className='p-20 max-w-2xl border border-purple-500 rounded-4xl flex flex-col  space-y-5 gap-4 text-white'>
+      <h2 className='text-5xl'>Create New Quiz</h2>
 
       <input
+      className='text-2xl p-3 w-full mb-10 border border-purple-500'
         type="text"
         placeholder="Quiz Title"
         value={quizTitle}
         onChange={(e) => setQuizTitle(e.target.value)}
-        style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
       />
 
       <textarea
+      className='text-2xl w-full mb-10 p-5 pb-6.5 border border-purple-500'
         placeholder="Quiz Description"
         value={quizDescription}
         onChange={(e) => setQuizDescription(e.target.value)}
-        style={{ width: '100%', padding: '8px', marginBottom: '20px' }}
+        
       />
 
       <input
+        className='text-2xl p-1.5 mb-10 border border-purple-500'
         type="number"
-        min="0"
         placeholder="Number of questions"
         value={questionCount}
         onChange={handleCountChange}
-        style={{ padding: '8px', marginBottom: '20px' }}
-      />
-
+      /> </div>
+      <div>
       {questions.map((_, index) => (
         <Question key={index} index={index} onChange={handleQuestionChange} />
       ))}
 
       {questions.length > 0 && (
-        <button onClick={handleSubmit} style={{ marginTop: '20px', padding: '10px 20px' }}>
+        <button onClick={handleSubmit} 
+        className='mt-10 p-1.5 rounded-xl border border-purple-500'
+        >
           Submit Quiz
         </button>
       )}
+      </div>
+   
     </div>
   );
 }
