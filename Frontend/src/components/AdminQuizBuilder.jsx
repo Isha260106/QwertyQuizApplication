@@ -67,11 +67,11 @@ function AdminQuizBuilder() {
       description: quizDescription,
       questions: questions
     };
-    alert('Quiz submitted Successfully')
+    
     console.log("Quiz Data:", quizData);
 
     // Uncomment below when backend is ready
-    /*
+    
     try {
       const res = await fetch('http://localhost:5000/api/quizzes', {
         method: 'POST',
@@ -92,7 +92,7 @@ function AdminQuizBuilder() {
       console.error("Submission error:", err);
       alert("Server error. Try again.");
     }
-    */
+    
   };
 
   return (
