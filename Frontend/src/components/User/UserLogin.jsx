@@ -1,9 +1,11 @@
 import React, {useState } from "react";
 import Footer from './Footer'
+import { useNavigate } from "react-router";
 function UserLogin(){
     const [name,setName]=useState('')
     const [usn,setUSN]=useState('')
     const [email,setEmail]=useState('')
+    const navigate=useNavigate()
     async function Validate(){
       if(!name ||!usn||!email){
         alert("Please fill all the credentials")
@@ -69,6 +71,8 @@ function UserLogin(){
       onClick={(e) => {
         e.preventDefault();
         Validate();
+        
+        navigate('/UserQuiz')
       }}
     >
       Submit

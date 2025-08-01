@@ -9,6 +9,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import Login from './components/Admin/Login.jsx'
 import UserLogin from './components/User/UserLogin.jsx'
 import ShowAvailableQuizzes from './components/Admin/ShowAvailableQuizzes.jsx'
+import GetQuiz from './components/User/GetQuiz.jsx'
 
 const router=createBrowserRouter([
     {path : '/',
@@ -26,6 +27,10 @@ const router=createBrowserRouter([
     },{
       path : '/availableQuiz',
       element : <ShowAvailableQuizzes/>
+    },
+    {
+      path : '/userQuiz',
+      element : <GetQuiz/>
     }
   
   ]

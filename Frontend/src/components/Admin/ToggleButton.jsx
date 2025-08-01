@@ -23,18 +23,28 @@
 
 // export default ToggleButton;
 import React, { useState } from 'react';
-import axios from 'axios';
 
 function ToggleButton({ quizId, initialStatus }) {
   const [isToggled, setIsToggled] = useState(initialStatus);
 
   const toggle = async () => {
-    try {
-      const res = await axios.patch(`http://localhost:5000/api/quizzes/toggle/${quizId}`);
-      setIsToggled(res.data.isActive);
-    } catch (err) {
-      console.error('Error toggling quiz:', err);
-    }
+   try {
+  const response = await fetch(`http://localhost:5000/api/quizzes/toggle/${quizId}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const data = await response.json();
+  setIsToggled(data.isActive);
+} catch (err) {
+  console.error('Error toggling quiz:', err);
+}
   };
 
   return (

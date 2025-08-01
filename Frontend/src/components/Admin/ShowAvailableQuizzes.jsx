@@ -21,10 +21,10 @@ function ShowAvailableQuizzes(){
     fetchQuestions();
   }, []);
     return(
-        <div className="flex flex-col  min-h-screen bg-black text-white">
-            <h1>Available Quizzes</h1>
+        <div className="flex flex-col items-center bg-black text-white">
+            <h1 className="text-4xl mb-5">Available Quizzes</h1>
             {quizzes.map((quiz) => (
-  <div key={quiz._id} className="p-4 flex flex-row justify-between border rounded shadow mb-4">
+  <div key={quiz._id} className="p-4 flex flex-row justify-between space-x-12 border border-purple-500 rounded-xl shadow mb-4">
     <h2 className="text-xl font-bold mb-2">{quiz.title}</h2>
     <ToggleButton quizId={quiz._id} initialStatus={quiz.isActive}/>
   </div>

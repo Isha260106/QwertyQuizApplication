@@ -4,4 +4,5 @@ const {loginUser}=require('../controllers/loginUser')
 
 router.post('/',loginUser)
 
+
 module.exports=router
