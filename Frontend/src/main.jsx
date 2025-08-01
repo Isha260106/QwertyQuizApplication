@@ -2,28 +2,35 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import {createBrowserRouter,RouterProvider} from "react-router"
-import App from './App.jsx'
 // import CreateQuiz from './components/CreateQuiz.jsx'
-import ViewResult from './components/ViewResult.jsx'
-import Question from './components/Question.jsx'
-import AdminQuizBuilder from './components/AdminQuizBuilder.jsx'
+import ViewResult from './components/Admin/ViewResult.jsx'
+import AdminQuizBuilder from './components/Admin/AdminQuizBuilder.jsx'
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import Login from './components/login.jsx'
+import Login from './components/Admin/Login.jsx'
+import UserLogin from './components/User/UserLogin.jsx'
+import ShowAvailableQuizzes from './components/Admin/ShowAvailableQuizzes.jsx'
+import GetQuiz from './components/User/GetQuiz.jsx'
 
 const router=createBrowserRouter([
     {path : '/',
+    element : <UserLogin/>,
+    },
+    {path : '/adminLogin',
     element : <Login/>},
     {
       path : '/createQuiz',
       element : <AdminQuizBuilder/>,
     },
     {
-      path : '/question',
-      element : <Question/>,
-    },
-    {
       path : '/viewResults',
       element : <ViewResult/>,
+    },{
+      path : '/availableQuiz',
+      element : <ShowAvailableQuizzes/>
+    },
+    {
+      path : '/userQuiz',
+      element : <GetQuiz/>
     }
   
   ]

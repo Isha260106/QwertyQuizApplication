@@ -13,7 +13,11 @@ const quizSchema = new mongoose.Schema({
       option4: String,
       correctAnswer: mongoose.Schema.Types.Mixed, // string or array
     }
-  ]
+  ],
+  isActive:{
+    type:Boolean,
+    default:false
+  }
 });
 
 module.exports = mongoose.model('Quiz', quizSchema);
