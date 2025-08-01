@@ -111,20 +111,20 @@ function Quiz({ quiz}) {
 
   return (
     
-    <div>
-      <h2 className="text-xl font-bold mb-4">{quiz.title}</h2>
-      {quiz.questions.map((q, i) => (
-        <div key={i} className=" mb-6 border border-purple-500">
-          <p className="font-semibold">{q.question}</p>
-          {[q.option1, q.option2, q.option3, q.option4].map((opt, j) => (
-            <div>
-              <label key={j} className="block mt-1">
+    <div className="min-h-screen flex items-center justify-center bg-black-100">
+  <div className="bg-black p-6 rounded shadow-md max-w-xl w-fit">
+    <h2 className="text-3xl text-white font-bold mb-4 text-center">{quiz.title}</h2>
+    {quiz.questions.map((q, i) => (
+      <div key={i} className="mb-6 border border-purple-500 p-4 rounded">
+        <p className="font-semibold text-wrap">{q.question}</p>
+        {[q.option1, q.option2, q.option3, q.option4].map((opt, j) => (
+          <div key={j}>
+            <label className="block mt-1">
               <input
                 type={q.inputType}
                 name={q.inputType === 'radio' ? `question-${i}` : `option-${i}-${j}`}
                 value={opt}
                 onChange={(e) => handleChange(i, opt, q.inputType, e.target.checked)}
-
                 disabled={submitted}
                 checked={
                   q.inputType === "checkbox"
@@ -135,25 +135,26 @@ function Quiz({ quiz}) {
               />
               {opt}
             </label>
-            </div>
-          ))}
-        </div>
-      
-      ))}
+          </div>
+        ))}
+      </div>
+    ))}
 
-      {!submitted ? (
-        <button
-          className="bg-blue-500 text-white px-4 py-2 rounded"
-          onClick={handleSubmit}
-        >
-          Submit
-        </button>
-      ) : (
-        <p className="mt-4 text-green-600 font-bold">
-          Your Score: {score}/{quiz.questions.length}
-        </p>
-      )}
-    </div>
+    {!submitted ? (
+      <button
+        className="bg-purple-500 text-white px-4 py-2 rounded self-center"
+        onClick={handleSubmit}
+      >
+        Submit
+      </button>
+    ) : (
+      <p className="mt-4 text-green-600 font-bold text-center">
+        Your Score: {score}/{quiz.questions.length}
+      </p>
+    )}
+  </div>
+</div>
+
     
   );
 }
