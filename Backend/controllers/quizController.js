@@ -38,12 +38,16 @@ const userQuizRender=async (req, res) => {
   res.json(quizzes);
 }
 
-const userResult=async (req, res) => {
-  const { quizId, score, answers } = req.body;
+const userResult = async (req, res) => {
+  const { user, quizId, score, answers } = req.body;
+
+  if (!user || !quizId) {
+    return res.status(400).json({ message: 'User details and quizId are required' });
+  }
 
   try {
     const result = new Result({
-      userId: req.user.id,
+      user,  // entire user object (name, email, usn)
       quizId,
       score,
       answers
@@ -55,6 +59,7 @@ const userResult=async (req, res) => {
     console.error(err);
     res.status(500).json({ message: 'Server error' });
   }
-}
+};
+
 
 module.exports = { createQuiz ,getQuiz,quizStatus,userQuizRender,userResult};

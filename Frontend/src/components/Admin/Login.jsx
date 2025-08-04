@@ -16,7 +16,7 @@ function Login(){
     return(
         
     <div className="flex flex-col justify-around min-h-screen bg-black">
-  <div className="flex flex-col justify-center items-center px-8 py-14 w-full max-w-md mx-auto h-[513px] space-y-15 text-white border-1 rounded-4xl border-purple-400 p-8">
+  <div className="flex flex-col justify-between items-center  py-14 w-full max-w-md mx-auto h-[513px] space-y-10 text-white border-1 rounded-4xl border-purple-400 p-8">
     <h1 className="text-3xl font-semibold">Admin Login</h1>
 
     <input 
