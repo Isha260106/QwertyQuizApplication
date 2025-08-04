@@ -11,6 +11,6 @@ router.get('/active',userQuizRender);
 
 router.patch('/toggle/:id',quizStatus);
 
-router.post('/submit',auth,userResult);
+router.post('/submit',userResult);
 
 module.exports = router;

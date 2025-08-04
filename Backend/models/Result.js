@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 
 const ResultSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  user: {
+    name: String,
+    email: String,
+    usn: String,
+  },
   quizId: String,
   score: Number,
   answers: Object,

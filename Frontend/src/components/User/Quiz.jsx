@@ -88,14 +88,15 @@ function Quiz({ quiz}) {
 
     // Submit to backend
     try {
-      const token = localStorage.getItem("token"); // Assuming JWT stored
-      const res = await fetch('http://localhost:5000/api/quiz/submit', {
+      const user = JSON.parse(localStorage.getItem('user'));
+      const res = await fetch('http://localhost:5000/api/quizzes/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`, // If using JWT
+          
         },
         body: JSON.stringify({
+          user,
           quizId: quiz._id,
           score: sc,
           answers: answers,
