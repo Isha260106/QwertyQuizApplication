@@ -10,6 +10,8 @@ import Login from './components/Admin/Login.jsx'
 import UserLogin from './components/User/UserLogin.jsx'
 import ShowAvailableQuizzes from './components/Admin/ShowAvailableQuizzes.jsx'
 import GetQuiz from './components/User/GetQuiz.jsx'
+import Feedback from './components/User/Feedback.jsx'
+import AdminDashboard from './components/Admin/AdminDashboard.jsx'
 
 const router=createBrowserRouter([
     {path : '/',
@@ -31,6 +33,14 @@ const router=createBrowserRouter([
     {
       path : '/userQuiz',
       element : <GetQuiz/>
+    },
+    {
+      path : '/feedback',
+      element : <Feedback/>
+    },
+    {
+      path:'/adminDashboard',
+      element: <AdminDashboard/>
     }
   
   ]

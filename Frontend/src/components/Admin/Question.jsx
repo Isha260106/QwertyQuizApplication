@@ -34,7 +34,7 @@ function Question({ index, onChange }) {
   };
 
   return (
-    <div className="border border-gray-400 p-6 rounded-xl text-white mb-6">
+    <div className="border border-gray-400 p-6 rounded-xl  text-white mb-6">
       <h4 className="text-2xl font-semibold mb-4">Question {index + 1}</h4>
 
       <label className="block mb-2 text-lg">Input Type:</label>
@@ -57,7 +57,7 @@ function Question({ index, onChange }) {
         name="question"
         placeholder="Enter question"
         onChange={handleInputChange}
-        className="w-full px-3 py-2 border border-purple-500 rounded mb-4 text-white"
+        className="w-full px-3 py-2 border border-purple-500 rounded mb-4 text-white text-wrap"
       />
 
       {[0, 1, 2, 3].map((i) => (

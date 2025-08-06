@@ -9,7 +9,7 @@ function Login(){
     const passRef=useRef(null)
     function Validate(){
         if(username==='qwerty.i/o' && password==='12345')
-            navigate('/createQuiz')
+            navigate('/adminDashboard')
         else
             alert("Invalid Credentials")
     }

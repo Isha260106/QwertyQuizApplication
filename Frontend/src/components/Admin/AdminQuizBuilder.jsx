@@ -70,7 +70,7 @@ function AdminQuizBuilder() {
     
     console.log("Quiz Data:", quizData);
 
-    // Uncomment below when backend is ready
+    
     
     try {
       const res = await fetch('http://localhost:5000/api/quizzes', {
@@ -97,7 +97,7 @@ function AdminQuizBuilder() {
 
   return (
     <div className='flex flex-col justify-around gap-4 items-center min-h-screen bg-black'>
-    <div className='p-20 max-w-2xl border border-purple-500 rounded-4xl flex flex-col  space-y-5 gap-4 text-white'>
+    <div className='p-20 max-w-2xl  border border-purple-500 rounded-4xl flex flex-col  space-y-5 gap-4 text-white'>
       <h2 className='text-5xl'>Create New Quiz</h2>
 
       <input
