@@ -1,10 +1,15 @@
 import React, { useState,useEffect } from 'react';
+import {useNavigate} from 'react-router'
+
+import Feedback from './Feedback';
+import CountdownTimer from './CountDownTimer';
 
 function Quiz({ quiz}) {
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(0);
 
+  const navigate=useNavigate()
   useEffect(() => {
   const handleVisibilityChange = () => {
     if (document.hidden) {
@@ -113,8 +118,9 @@ function Quiz({ quiz}) {
   return (
     
     <div className="min-h-screen flex items-center justify-center bg-black-100">
-  <div className="bg-black p-6 rounded shadow-md max-w-xl w-fit">
+  <div className="bg-black p-6 rounded w-full text-3xl sm:w-11/12 md:w-4/5 lg:w-3/5 xl:w-3/5 mx-auto">
     <h2 className="text-3xl text-white font-bold mb-4 text-center">{quiz.title}</h2>
+    <CountdownTimer/>
     {quiz.questions.map((q, i) => (
       <div key={i} className="mb-6 border border-purple-500 p-4 rounded">
         <p className="font-semibold text-wrap">{q.question}</p>
@@ -149,9 +155,7 @@ function Quiz({ quiz}) {
         Submit
       </button>
     ) : (
-      <p className="mt-4 text-green-600 font-bold text-center">
-        Your Score: {score}/{quiz.questions.length}
-      </p>
+      navigate('/feedback')
     )}
   </div>
 </div>
