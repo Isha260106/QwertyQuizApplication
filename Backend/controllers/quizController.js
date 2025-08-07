@@ -1,5 +1,6 @@
 const Quiz = require('../models/Quiz');
 const Result = require('../models/Result');
+const Feedback =require('../models/feedback');
 const createQuiz = async (req, res) => {
   try {
     const quiz = new Quiz(req.body);
@@ -16,6 +17,16 @@ const getQuiz=async(req,res)=>{
     res.json(quiz)
   }catch(err){
     res.status(500).json({message:'Error getting quiz',err})
+  }
+}
+
+const userFeedback=async(req,res)=>{
+  try{
+    const feedback=new Feedback(req.body);
+    await feedback.save();
+    res.status(201).json({message : 'Feedback submitted'})
+  }catch(err){
+    res.status(500).json({message:'Error storing data',err})
   }
 }
 
@@ -62,4 +73,4 @@ const userResult = async (req, res) => {
 };
 
 
-module.exports = { createQuiz ,getQuiz,quizStatus,userQuizRender,userResult};
+module.exports = {userFeedback, createQuiz ,getQuiz,quizStatus,userQuizRender,userResult};

@@ -1,7 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import {useNavigate} from 'react-router'
 
-import Feedback from './Feedback';
 import CountdownTimer from './CountDownTimer';
 
 function Quiz({ quiz}) {
@@ -14,7 +13,7 @@ function Quiz({ quiz}) {
   const handleVisibilityChange = () => {
     if (document.hidden) {
       alert("Tab switch detected! You may be disqualified.");
-      // Optionally: log or auto-submit quiz
+      setAnswers({})
     }
   };
 
@@ -104,7 +103,7 @@ function Quiz({ quiz}) {
           user,
           quizId: quiz._id,
           score: sc,
-          answers: answers,
+          answers: answers, 
         }),
       });
 
