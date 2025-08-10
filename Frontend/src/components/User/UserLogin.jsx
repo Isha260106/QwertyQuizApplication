@@ -5,6 +5,10 @@ function UserLogin(){
     const [name,setName]=useState('')
     const [usn,setUSN]=useState('')
     const [email,setEmail]=useState('')
+    const [semester,setSemester]=useState('')
+    const [branch,setBranch]=useState('')
+    const [mobileNo,setMobileNo]=useState('')
+
     const navigate=useNavigate()
     async function Validate(){
       if(!name ||!usn||!email){
@@ -15,6 +19,9 @@ function UserLogin(){
       const userData={
         "name" : name,
         "usn" : usn,
+        "semester":semester,
+        "branch":branch,
+        "mobileNo":mobileNo,
         "email" : email
       }
 
@@ -41,7 +48,7 @@ function UserLogin(){
     return(
      <>   
     <div className="flex flex-col justify-around min-h-screen bg-black">
-  <div className="flex flex-col justify-between items-center px-8 py-14 w-full max-w-md mx-auto h-[513px] space-y-15 text-white border-1 rounded-4xl border-purple-400 p-8">
+  <div className="flex flex-col justify-between items-center px-8 py-14 w-full max-w-md mx-auto  space-y-15 text-white border-1 rounded-4xl border-purple-400 p-8">
     <h1 className="text-3xl font-semibold">Login</h1>
 
     <input 
@@ -58,6 +65,43 @@ function UserLogin(){
       value={usn}
       onChange={(e) => setUSN(e.target.value)}
 />
+
+<select className="w-full text-gray-400 bg-black border-b-2 border-purple-500 focus:outline-none"
+      value={semester}
+      onChange={(e) => setSemester(e.target.value)}>
+      <option value="" disabled selected hidden>
+        Semester
+      </option>
+      <option value='1'>1</option>
+      <option value='2'>2</option>
+      <option value='3'>3</option>
+      <option value='4'>4</option>
+      <option value='5'>5</option>
+      <option value='6'>6</option>
+</select>
+
+<select className="w-full text-gray-400 bg-black border-b-2 border-purple-500 focus:outline-none"
+      value={branch}
+      onChange={(e) => setBranch(e.target.value)}>
+      <option value="" disabled selected hidden>
+        Branch
+      </option>
+      <option value='CSE'>CSE</option>
+      <option value='ISE'>ISE</option>
+      <option value='AIML'>AIML</option>
+      <option value='ECE'>ECE</option>
+      <option value='EEE'>EEE</option>
+      <option value='MECH'>MECH</option>
+      <option value='CHEM'>CHEM</option>
+</select>
+
+<input
+      className="w-full text-white bg-transparent border-b-2 border-purple-500 focus:outline-none placeholder-gray-400"
+      type="text"
+      placeholder="Mobile Number"
+      value={mobileNo}
+      onChange={(e) => setMobileNo(e.target.value)}
+    />
 
     <input
       className="w-full text-white bg-transparent border-b-2 border-purple-500 focus:outline-none placeholder-gray-400"

@@ -12,7 +12,7 @@ import ShowAvailableQuizzes from './components/Admin/ShowAvailableQuizzes.jsx'
 import GetQuiz from './components/User/GetQuiz.jsx'
 import Feedback from './components/User/Feedback.jsx'
 import AdminDashboard from './components/Admin/AdminDashboard.jsx'
-
+import QuizContextProvider from './context/QuizContextProvider.jsx'
 const router=createBrowserRouter([
     {path : '/',
     element : <UserLogin/>,
@@ -48,6 +48,8 @@ const router=createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <QuizContextProvider>
     <RouterProvider router={router}/>
+    </QuizContextProvider>
   </StrictMode>
 )
