@@ -21,7 +21,7 @@ function ViewResult() {
 
   // Fetch top performers whenever quizId changes
   useEffect(() => {
-    if (!selectedQuizId) return; // Don't call API if no quiz is selected
+    if (!selectedQuizId) return;
 
     const topPerformers = async () => {
       try {
@@ -37,7 +37,7 @@ function ViewResult() {
     };
 
     topPerformers();
-  }, [selectedQuizId]); // 👈 This is key
+  }, [selectedQuizId]);
 
   return (
     <div>
@@ -55,15 +55,37 @@ function ViewResult() {
         ))}
       </select>
 
-      {/* Show top performers */}
       {topFivePerformers.length > 0 && (
-        <ul>
-          {topFivePerformers.map((user, idx) => (
-            <li key={idx}>
-              {user.user?.name} — {user.score}
-            </li>
-          ))}
-        </ul>
+        <table border="1" cellPadding="8" style={{ marginTop: "20px", borderCollapse: "collapse" }}>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>USN</th>
+              <th>Semester</th>
+              <th>Branch</th>
+              <th>Mobile</th>
+              <th>Email</th>
+              <th>Score</th>
+              <th>Submitted At</th>
+            </tr>
+          </thead>
+          <tbody>
+            {topFivePerformers.map((result, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{result.user?.name}</td>
+                <td>{result.user?.usn}</td>
+                <td>{result.user?.semester}</td>
+                <td>{result.user?.branch}</td>
+                <td>{result.user?.mobileNo}</td>
+                <td>{result.user?.email}</td>
+                <td>{result.score}</td>
+                <td>{new Date(result.submittedAt).toLocaleString()}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
     </div>
   );
