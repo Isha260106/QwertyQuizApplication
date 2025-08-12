@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import {createBrowserRouter,RouterProvider} from "react-router"
+import {createBrowserRouter,RouterProvider} from "react-router-dom"
 import PrivateRoute from './components/Admin/PrivateRoute.jsx'
 import ViewResult from './components/Admin/ViewResult.jsx'
 import AdminQuizBuilder from './components/Admin/AdminQuizBuilder.jsx'

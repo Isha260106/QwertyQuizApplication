@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 function Feedback() {
   const navigate=useNavigate()
   const [userData, setUserData] = useState({
@@ -124,10 +124,10 @@ function Feedback() {
             />
             <span
               className={`text-3xl  ${
-                value >= val.toString() ? "text-yellow-400" : "text-gray-500"
+                value >= val.toString() ? "text-purple-600" : "text-gray-500"
               }`}
             >
-              ★
+              ●
             </span>
           </label>
         ))}
@@ -157,7 +157,7 @@ function Feedback() {
 
   return (
     <div className="flex flex-col w-max justify-center items-center min-h-screen m-auto py-20 bg-black">
-      <div className="flex flex-col justify-between bg-gray-900 px-8 py-14 w-3xl  space-y-6 text-white border-1 rounded-4xl border-purple-400">
+      <div className="flex flex-col justify-between px-8 py-14 w-3xl  space-y-6 text-white border-1 rounded-4xl border-purple-400">
         <h1 className="text-3xl font-semibold">Feedback Form</h1>
 
         <input
@@ -185,20 +185,20 @@ function Feedback() {
         />
 
         {/* Overall Experience with Star Rating */}
-        {renderStarRating(overallExperience, setOverallExperience, "How was the Overall Experience of the Workshop?...")}
+        {renderStarRating(overallExperience, setOverallExperience, "How was the Overall Experience of the Workshop?")}
 
         {/* Career Usefulness */}
-        {renderStarRating(careerUsefulness, setCareerUsefulness, "How much do you think the Workshop will be useful for your career?...")}
+        {renderStarRating(careerUsefulness, setCareerUsefulness, "How much do you think the Workshop will be useful for your career?")}
 
 
         {/* Logistics Satisfaction */}
         {renderStarRating(logistics_Venue, setLogistics_Venue, "Venue of the workshop...")}
-        {renderStarRating(logistics_Registration_Process, setLogistics_Registration_Process, "Registration Process...")}
-        {renderStarRating(logistics_Flow_Workshop, setLogistics_Flow_Workshop, "Flow of the Workshop...")}
-        {renderStarRating(logistics_content, setLogistics_content, "Content...")}
-        {renderStarRating(logistics_Delivery_content, setLogistics_Delivery_content, "Delivery of the content...")}
-        {renderStarRating(logistics_Transportation, setLogistics_Transportation, "Transportation...")}
-        {renderStarRating(logistics_Activities, setLogistics_Activities, "Activities...")}
+        {renderStarRating(logistics_Registration_Process, setLogistics_Registration_Process, "Registration Process")}
+        {renderStarRating(logistics_Flow_Workshop, setLogistics_Flow_Workshop, "Flow of the Workshop")}
+        {renderStarRating(logistics_content, setLogistics_content, "Content")}
+        {renderStarRating(logistics_Delivery_content, setLogistics_Delivery_content, "Delivery of the content")}
+        {renderStarRating(logistics_Transportation, setLogistics_Transportation, "Transportation")}
+        {renderStarRating(logistics_Activities, setLogistics_Activities, "Activities")}
 
         {/* Key Takeaways */}
         <input
