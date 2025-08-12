@@ -1,3 +1,4 @@
+const { default: mongoose } = require('mongoose');
 const Quiz = require('../models/Quiz');
 const Result = require('../models/Result');
 const Feedback =require('../models/feedback');
@@ -72,5 +73,43 @@ const userResult = async (req, res) => {
   }
 };
 
+const getResult = async (req, res) => {
+  try {
+    const quizId= req.params.id 
+    console.log(quizId)
+    if (!mongoose.Types.ObjectId.isValid(quizId)) {
+      return res.status(400).json({ error: "Invalid quizId" });
+    }
 
-module.exports = {userFeedback, createQuiz ,getQuiz,quizStatus,userQuizRender,userResult};
+    const PRIORITY_BRANCHES = ["ECE", "EEE", "MECH", "CHEM"];
+
+    // 1. Get top 10 performers
+    const top10 = await Result.find({ quizId })
+      .sort({ score: -1, submittedAt: 1 })
+      .limit(10)
+      .select("user score submittedAt");
+
+    // 2. Separate priority branch users & others
+    const priority = top10.filter(r => PRIORITY_BRANCHES.includes(r.user.branch));
+    const others = top10.filter(r => !PRIORITY_BRANCHES.includes(r.user.branch));
+
+    // 3. Merge so priority users appear first
+    let finalList = [...priority, ...others];
+
+    // 4. Remove duplicates by username
+    finalList = finalList.filter(
+      (item, index, self) =>
+        index === self.findIndex(u => u.user.name === item.user.name)
+    );
+
+    // 5. Keep only top 5 after promotion
+    finalList = finalList.slice(0, 5);
+
+    res.status(200).json(finalList);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
+module.exports = {userFeedback, createQuiz ,getQuiz,quizStatus,userQuizRender,userResult,getResult};

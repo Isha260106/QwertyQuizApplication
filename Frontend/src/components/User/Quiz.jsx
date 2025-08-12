@@ -165,7 +165,7 @@
 
 // export default Quiz;
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import CountdownTimer from './CountDownTimer';
 
 // 🔹 Helper to shuffle an array

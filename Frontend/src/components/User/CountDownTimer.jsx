@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import Countdown from 'react-countdown';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 function CountdownTimer() {
   const navigate = useNavigate();
@@ -20,14 +20,14 @@ function CountdownTimer() {
     } else {
       return (
         <span className="text-xl font-bold text-white">
-          Time Left: {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
+           {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
         </span>
       );
     }
   };
 
   return (
-    <div className="bg-gray-800 p-4 rounded text-center">
+    <div className=" p-4 rounded text-right">
       <Countdown
         date={countdownTarget.current}
         renderer={renderer}

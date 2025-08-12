@@ -1,6 +1,6 @@
 import React, {useState } from "react";
 import Footer from './Footer'
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 function UserLogin(){
     const [name,setName]=useState('')
     const [usn,setUSN]=useState('')
