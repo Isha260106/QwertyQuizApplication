@@ -8,8 +8,10 @@ function Login(){
     const userRef=useRef(null)
     const passRef=useRef(null)
     function Validate(){
-        if(username==='qwerty.i/o' && password==='12345')
+        if(username==='qwerty.i/o' && password==='12345'){
+            localStorage.setItem("isLoggedIn", "true");
             navigate('/adminDashboard')
+        }
         else
             alert("Invalid Credentials")
     }

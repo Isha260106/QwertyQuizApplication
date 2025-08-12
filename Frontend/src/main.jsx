@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import {createBrowserRouter,RouterProvider} from "react-router"
-// import CreateQuiz from './components/CreateQuiz.jsx'
+import PrivateRoute from './components/Admin/PrivateRoute.jsx'
 import ViewResult from './components/Admin/ViewResult.jsx'
 import AdminQuizBuilder from './components/Admin/AdminQuizBuilder.jsx'
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -12,7 +12,7 @@ import ShowAvailableQuizzes from './components/Admin/ShowAvailableQuizzes.jsx'
 import GetQuiz from './components/User/GetQuiz.jsx'
 import Feedback from './components/User/Feedback.jsx'
 import AdminDashboard from './components/Admin/AdminDashboard.jsx'
-
+import QuizContextProvider from './context/QuizContextProvider.jsx'
 const router=createBrowserRouter([
     {path : '/',
     element : <UserLogin/>,
@@ -40,7 +40,9 @@ const router=createBrowserRouter([
     },
     {
       path:'/adminDashboard',
-      element: <AdminDashboard/>
+      element: <PrivateRoute>
+              <AdminDashboard />
+            </PrivateRoute>
     }
   
   ]
@@ -48,6 +50,8 @@ const router=createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <QuizContextProvider>
     <RouterProvider router={router}/>
+    </QuizContextProvider>
   </StrictMode>
 )
