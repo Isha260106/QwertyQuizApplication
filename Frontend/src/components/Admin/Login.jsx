@@ -7,14 +7,27 @@ function Login(){
     const navigate=useNavigate()
     const userRef=useRef(null)
     const passRef=useRef(null)
-    function Validate(){
-        if(username==='qwerty.i/o' && password==='12345'){
-            localStorage.setItem("isLoggedIn", "true");
-            navigate('/adminDashboard')
-        }
-        else
-            alert("Invalid Credentials")
-    }
+    function Validate() {
+  fetch("http://localhost:5000/api/admin/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.success) {
+        localStorage.setItem("isLoggedIn", "true");
+        navigate("/adminDashboard");
+      } else {
+        alert(data.message || "Invalid credentials");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      alert("Error connecting to server");
+    });
+}
+
     return(
         
     <div className="flex flex-col justify-around min-h-screen bg-black">
