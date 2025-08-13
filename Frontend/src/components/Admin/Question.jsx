@@ -155,14 +155,14 @@ function Question({ index, data, onChange }) {
       </select>
 
       {/* Question Text */}
-      <input
-        type="text"
-        name="question"
-        placeholder="Enter question"
-        value={data.question}
-        onChange={handleInputChange}
-        className="w-full px-3 py-2 border border-purple-500 rounded mb-4 bg-transparent text-white"
-      />
+      <code><textarea
+  name="question"
+  placeholder="Enter question here..."
+  value={data.question}
+  onChange={handleInputChange}
+  rows={8} // You can change the number of rows
+  className="w-full px-3 py-2 border border-purple-500 rounded mb-4 bg-transparent text-white resize-none"
+/></code>
 
       {/* Options */}
       {[0, 1, 2, 3].map((i) => (

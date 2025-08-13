@@ -93,6 +93,7 @@ function UserLogin(){
       <option value='EEE'>EEE</option>
       <option value='MECH'>MECH</option>
       <option value='CHEM'>CHEM</option>
+      <option value='CIVIL'>CIVIL</option>
 </select>
 
 <input

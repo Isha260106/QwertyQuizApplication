@@ -19,7 +19,7 @@ function CountdownTimer() {
       return <span className="text-red-500">Time's up!</span>;
     } else {
       return (
-        <span className="text-xl font-bold text-white">
+        <span className="text-3xl font-bold text-white">
            {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
         </span>
       );

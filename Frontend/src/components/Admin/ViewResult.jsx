@@ -40,53 +40,56 @@ function ViewResult() {
   }, [selectedQuizId]);
 
   return (
-    <div>
-      <label htmlFor="quizSelect">Select a Quiz:</label>
+    <div className="flex flex-col justify-between items-center">
+      <div className="flex flex-col justify-between">
+        <label className="text-4xl text-center" htmlFor="quizSelect">Select a Quiz:</label>
       <select
         id="quizSelect"
         value={selectedQuizId}
         onChange={(e) => setSelectedQuizId(e.target.value)}
+        className="border border-purple-600 m-10 p-5"
       >
-        <option value="">-- Choose a quiz --</option>
+        <option value="" className="bg-black text-gray-400">-- Choose a quiz --</option>
         {quizzes.map((quiz) => (
-          <option key={quiz._id} value={quiz._id}>
+          <option className="bg-black text-gray-400" key={quiz._id} value={quiz._id}>
             {quiz.title}
           </option>
         ))}
       </select>
 
       {topFivePerformers.length > 0 && (
-        <table border="1" cellPadding="8" style={{ marginTop: "20px", borderCollapse: "collapse" }}>
-          <thead>
+        <table className="border border-purple-600" >
+          <thead className="border-b-2 border-purple-600">
             <tr>
-              <th>Rank</th>
-              <th>Name</th>
-              <th>USN</th>
-              <th>Semester</th>
-              <th>Branch</th>
-              <th>Mobile</th>
-              <th>Email</th>
-              <th>Score</th>
-              <th>Submitted At</th>
+              <th className="border-r-2 border-purple-600 text-center p-4">Rank</th>
+              <th className="border-r-2 border-purple-600 text-center p-4">Name</th>
+              <th className="border-r-2 border-purple-600 text-center p-4">USN</th>
+              <th className="border-r-2 border-purple-600 text-center p-4">Semester</th>
+              <th className="border-r-2 border-purple-600 text-center p-4">Branch</th>
+              <th className="border-r-2 border-purple-600 text-center p-4">Mobile</th>
+              <th className="border-r-2 border-purple-600 text-center p-4">Email</th>
+              <th className="border-r-2 border-purple-600 text-center p-4">Score</th>
+              <th className=" text-center p-4">Submitted At</th>
             </tr>
           </thead>
           <tbody>
             {topFivePerformers.map((result, index) => (
               <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{result.user?.name}</td>
-                <td>{result.user?.usn}</td>
-                <td>{result.user?.semester}</td>
-                <td>{result.user?.branch}</td>
-                <td>{result.user?.mobileNo}</td>
-                <td>{result.user?.email}</td>
-                <td>{result.score}</td>
-                <td>{new Date(result.submittedAt).toLocaleString()}</td>
+                <td className="border-r-2 border-purple-600 text-center p-4">{index + 1}</td>
+                <td className="border-r-2 border-purple-600 text-center p-4">{result.user?.name}</td>
+                <td className="border-r-2 border-purple-600 text-center p-4">{result.user?.usn}</td>
+                <td className="border-r-2 border-purple-600 text-center p-4">{result.user?.semester}</td>
+                <td className="border-r-2 border-purple-600 text-center p-4">{result.user?.branch}</td>
+                <td className="border-r-2 border-purple-600 text-center p-4">{result.user?.mobileNo}</td>
+                <td className="border-r-2 border-purple-600 text-center p-4">{result.user?.email}</td>
+                <td className="border-r-2 border-purple-600 text-center p-4">{result.score}</td>
+                <td className="text-center p-4">{new Date(result.submittedAt).toLocaleString()}</td>
               </tr>
             ))}
           </tbody>
         </table>
       )}
+    </div>
     </div>
   );
 }

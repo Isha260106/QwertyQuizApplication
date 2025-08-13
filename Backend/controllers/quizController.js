@@ -81,7 +81,7 @@ const getResult = async (req, res) => {
       return res.status(400).json({ error: "Invalid quizId" });
     }
 
-    const PRIORITY_BRANCHES = ["ECE", "EEE", "MECH", "CHEM"];
+    const PRIORITY_BRANCHES = ["ECE", "EEE", "MECH", "CHEM","CIVIL"];
 
     // 1. Get top 10 performers
     const top10 = await Result.find({ quizId })
@@ -102,8 +102,8 @@ const getResult = async (req, res) => {
         index === self.findIndex(u => u.user.name === item.user.name)
     );
 
-    // 5. Keep only top 5 after promotion
-    finalList = finalList.slice(0, 5);
+    // 5. Keep only top 10 after promotion
+    finalList = finalList.slice(0, 10);
 
     res.status(200).json(finalList);
   } catch (err) {
