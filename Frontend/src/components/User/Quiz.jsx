@@ -225,13 +225,13 @@ function Quiz({ quiz }) {
   }, []);
 
   // 🔹 Disable right click
-  useEffect(() => {
-    const handleRightClick = (e) => {
-      e.preventDefault();
-    };
-    document.addEventListener("contextmenu", handleRightClick);
-    return () => document.removeEventListener("contextmenu", handleRightClick);
-  }, []);
+  // useEffect(() => {
+  //   const handleRightClick = (e) => {
+  //     e.preventDefault();
+  //   };
+  //   document.addEventListener("contextmenu", handleRightClick);
+  //   return () => document.removeEventListener("contextmenu", handleRightClick);
+  // }, []);
 
   // 🔹 Handle answer changes
   const handleChange = (qIndex, value, type, isChecked) => {
@@ -299,13 +299,13 @@ function Quiz({ quiz }) {
   if (!shuffledQuiz) return null;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black-100">
-      <div className="bg-black p-6 rounded w-full text-3xl sm:w-11/12 md:w-4/5 lg:w-3/5 xl:w-3/5 mx-auto">
-        <h2 className="text-3xl text-white font-bold mb-4 text-center">{shuffledQuiz.title}</h2>
+    <div className="min-h-screen flex flex-col items-center justify-between bg-black-100">
+      <div className="bg-black p-6 rounded w-full text-3xl sm:w-11/12 md:w-4/5 lg:w-3/5 xl:w-1/4 mx-auto">
+        <h2 className="text-4xl text-white font-bold mb-4 text-center">{shuffledQuiz.title}</h2>
         <CountdownTimer />
         
         {shuffledQuiz.questions.map((q, i) => (
-          <div key={i} className="mb-6 border border-purple-500 p-4 rounded">
+          <div key={i} className="mb-6 border border-purple-500 p-4 rounded-3xl">
             <p className="font-semibold text-wrap">{q.question}</p>
             {q.options.map((opt, j) => (
               <div key={j}>
@@ -331,12 +331,14 @@ function Quiz({ quiz }) {
         ))}
 
         {!submitted ? (
-          <button
-            className="bg-purple-500 text-white px-4 py-2 rounded self-center"
-            onClick={handleSubmit}
-          >
-            Submit
-          </button>
+          <div className="flex justify-center mt-4">
+    <button
+      className="bg-purple-500 text-white px-4 py-2 rounded"
+      onClick={handleSubmit}
+    >
+      Submit
+    </button>
+  </div>
         ) : (
           navigate('/feedback')
         )}

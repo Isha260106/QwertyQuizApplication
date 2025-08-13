@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const quizRoutes = require('./routes/quizRoutes');
 const userRoutes=require('./routes/userRoute');
+const adminRoute=require('./routes/adminRoute')
 // const adminLoginRoute=require('./routes/adminLoginRoute');
 
 dotenv.config();
@@ -15,6 +16,7 @@ app.use(express.json());
 
 app.use('/api/quizzes', quizRoutes);
 app.use('/api/user',userRoutes)
+app.use('/api/admin',adminRoute)
 // app.use('/api/admin',adminLoginRoute)
 
 const PORT = process.env.PORT || 5000;
