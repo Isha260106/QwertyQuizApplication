@@ -300,13 +300,16 @@ function Quiz({ quiz }) {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-between bg-black-100">
-      <div className="bg-black p-6 rounded w-full text-3xl sm:w-11/12 md:w-4/5 lg:w-3/5 xl:w-1/4 mx-auto">
+      <div className="bg-black p-6 rounded text-3xl mx-auto">
         <h2 className="text-4xl text-white font-bold mb-4 text-center">{shuffledQuiz.title}</h2>
         <CountdownTimer />
         
         {shuffledQuiz.questions.map((q, i) => (
           <div key={i} className="mb-6 border border-purple-500 p-4 rounded-3xl">
-            <p className="font-semibold text-wrap">{q.question}</p>
+            <div className='mb-5'>
+              <span className="font-semibold">{i+1}.{" "}</span>
+            <code className=' text-white text-wrap whitespace-pre'>{q.question}</code>
+            </div>
             {q.options.map((opt, j) => (
               <div key={j}>
                 <label className="block mt-1">

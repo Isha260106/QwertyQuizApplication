@@ -9,4 +9,14 @@ const loginUser=async(req,res)=>{
         res.status(500).json({message:'Error logging in',err})
     }
 }
-module.exports={loginUser}
+
+const countUsers=async(req,res)=>{
+    try{
+        const count=await User.countDocuments({})
+        res.json({userCount : count})
+    }
+    catch(err){
+        res.status(500).json({message:'Error getting count',err})
+    }
+}
+module.exports={loginUser,countUsers}
